@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   postgres:
-    image: postgres:14
+    image: postgres:15
     container_name: order_postgres
     restart: unless-stopped
     environment:
@@ -18,15 +18,15 @@ services:
       - order-network
 
   rabbitmq:
-    image: rabbitmq:3.12-management
+    image: rabbitmq:3-management
     container_name: order_rabbitmq
     restart: unless-stopped
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
     ports:
-      - "5672:5672"     # Broker
-      - "15672:15672"   # Dashboard
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - order-network
 
