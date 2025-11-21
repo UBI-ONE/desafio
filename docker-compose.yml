@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   postgres:
-    image: postgres:14
+    image: bitnami/postgresql:14
     container_name: order_postgres
     restart: always
     environment:
@@ -12,12 +12,12 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/bitnami/postgresql
     networks:
       - order-network
 
   rabbitmq:
-    image: rabbitmq:3-management
+    image: bitnami/rabbitmq:3.12.12
     container_name: order_rabbitmq
     restart: always
     ports:
