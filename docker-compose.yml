@@ -17,7 +17,7 @@ services:
       - order-network
 
   rabbitmq:
-    image: bitnami/rabbitmq:3.12
+    image: rabbitmq:3-management
     container_name: order_rabbitmq
     restart: always
     ports:
