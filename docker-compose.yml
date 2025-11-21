@@ -1,10 +1,11 @@
 version: '3.9'
 
 services:
+
   postgres:
-    image: bitnami/postgresql:14
+    image: postgres:14
     container_name: order_postgres
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_USER: order_user
       POSTGRES_PASSWORD: order_pass
@@ -12,17 +13,20 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/bitnami/postgresql
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - order-network
 
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:3.12-management
     container_name: order_rabbitmq
-    restart: always
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "5672:5672"     # Broker
+      - "15672:15672"   # Dashboard
     networks:
       - order-network
 
