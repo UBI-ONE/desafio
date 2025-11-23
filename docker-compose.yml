@@ -3,7 +3,11 @@ version: '3.9'
 services:
 
   postgres:
+<<<<<<< HEAD
     image: postgres:14
+=======
+    image: postgres:12.0
+>>>>>>> 4d7b6d3acf9b6d1affb96fe9be706f4fac25fc16
     container_name: order_postgres
     restart: unless-stopped
     environment:
