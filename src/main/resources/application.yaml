@@ -20,15 +20,19 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
 
+  # ⛔ DESABILITANDO FLYWAY
   flyway:
-    enabled: true
-    locations: classpath:db/migration
+    enabled: false
+
+  # ✅ HABILITANDO LIQUIBASE
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
 
   rabbitmq:
     host: localhost
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: admin
 
 server:
   port: 8080
